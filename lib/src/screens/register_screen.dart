@@ -1,14 +1,12 @@
-import 'package:cu_chi_project/src/screens/info_user_screen.dart';
-import 'package:cu_chi_project/src/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:cu_chi_project/Styles/theme.dart' as Style;
 
-class LoginScreen extends StatefulWidget {
+class RegisterScreen extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _RegisterScreenState createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +24,6 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List<Color> colors = [Color(0xFFFB9245), Color(0xFFF54E6B)];
-  int _index = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -37,11 +34,7 @@ class _HomeState extends State<Home> {
       left: false,
       right: false,
       child: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: colors,
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter)),
+        decoration: BoxDecoration(gradient: Style.Colors.primaryGradient),
         child: Stack(
           children: [
             Container(
@@ -74,7 +67,7 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                     // Tabs(context),
-                    Login(context),
+                    SignUp(context),
                   ],
                 ),
               ),
@@ -85,7 +78,7 @@ class _HomeState extends State<Home> {
     ));
   }
 
-  Widget Login(BuildContext context) {
+  Widget SignUp(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 30.0, left: 15, right: 15),
       child: Column(
@@ -94,87 +87,111 @@ class _HomeState extends State<Home> {
               overflow: Overflow.visible,
               alignment: Alignment.bottomCenter,
               children: <Widget>[
-                Card(
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          top: 10.0, left: 15, right: 15, bottom: 20),
-                      child: Column(
-                        children: <Widget>[
-                          Text(
-                            "Đăng nhập",
-                            style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w900,
-                              color: Style.Colors.mainColor,
-                            ),
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        top: 10.0, left: 15, right: 15, bottom: 20),
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "Tạo tài khoản",
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.w900,
+                            color: Style.Colors.mainColor,
                           ),
-                          TextField(
-                            decoration: InputDecoration(
-                                suffixIcon: Icon(
-                                  Icons.email,
-                                  color: Colors.grey,
-                                ),
-                                labelText: "Email",
-                                labelStyle: TextStyle(color: Colors.black87),
-                                enabledBorder: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.transparent)),
-                                focusedBorder: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.transparent))),
-                          ),
-                          Divider(color: Colors.grey, height: 8),
-                          TextField(
-                            decoration: InputDecoration(
-                                suffixIcon: Icon(
-                                  Icons.lock,
-                                  color: Colors.grey,
-                                ),
-                                labelText: "Mật khẩu",
-                                labelStyle: TextStyle(color: Colors.black87),
-                                enabledBorder: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.transparent)),
-                                focusedBorder: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.transparent))),
-                          ),
-                          Divider(
-                            color: Colors.transparent,
-                            height: 20,
-                          )
-                        ],
-                      ),
+                        ),
+                        TextField(
+                          decoration: InputDecoration(
+                              suffixIcon: Icon(
+                                Icons.person,
+                                color: Colors.grey,
+                              ),
+                              labelText: "Họ tên",
+                              labelStyle: TextStyle(color: Colors.black87),
+                              enabledBorder: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.transparent)),
+                              focusedBorder: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.transparent))),
+                        ),
+                        Divider(color: Colors.grey, height: 8),
+                        TextField(
+                          decoration: InputDecoration(
+                              suffixIcon: Icon(
+                                Icons.email_outlined,
+                                color: Colors.grey,
+                              ),
+                              labelText: "Email",
+                              labelStyle: TextStyle(color: Colors.black87),
+                              enabledBorder: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.transparent)),
+                              focusedBorder: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.transparent))),
+                        ),
+                        Divider(color: Colors.grey, height: 8),
+                        TextField(
+                          decoration: InputDecoration(
+                              suffixIcon: Icon(
+                                Icons.lock,
+                                color: Colors.grey,
+                              ),
+                              labelText: "Mật khẩu",
+                              labelStyle: TextStyle(color: Colors.black87),
+                              enabledBorder: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.transparent)),
+                              focusedBorder: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.transparent))),
+                        ),
+                        Divider(color: Colors.grey, height: 8),
+                        TextField(
+                          decoration: InputDecoration(
+                              suffixIcon: Icon(
+                                Icons.lock,
+                                color: Colors.grey,
+                              ),
+                              labelText: "Nhập lại mật khẩu",
+                              labelStyle: TextStyle(color: Colors.black87),
+                              enabledBorder: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.transparent)),
+                              focusedBorder: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.transparent))),
+                        ),
+                        Divider(color: Colors.grey, height: 8),
+                        Divider(
+                          color: Colors.transparent,
+                          height: 20,
+                        )
+                      ],
                     ),
                   ),
                 ),
                 Positioned(
-                  top: 180,
+                  top: 323,
                   child: Center(
                     child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => InfoUserScreen()),
-                        );
-                      },
                       child: Container(
                         width: MediaQuery.of(context).size.width - 100,
                         decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: colors,
                             ),
-                            borderRadius: BorderRadius.circular(50)),
+                            borderRadius: BorderRadius.circular(10)),
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 15),
+                          padding: const EdgeInsets.symmetric(vertical: 12.0),
                           child: Center(
                               child: Text(
-                            "Đăng nhập",
+                            "Tạo tài khoản",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
@@ -187,18 +204,7 @@ class _HomeState extends State<Home> {
                 ),
               ]),
           Padding(
-            padding: const EdgeInsets.only(top: 45.0),
-            child: GestureDetector(
-              child: Center(
-                  child: Text(
-                "Quên mật khẩu?",
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              )),
-              onTap: () {},
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 20.0),
+            padding: const EdgeInsets.only(top: 40.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -210,7 +216,7 @@ class _HomeState extends State<Home> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15.0),
                   child: Text(
-                    "hoặc",
+                    "Hoặc",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 15,

@@ -1,6 +1,7 @@
-import 'package:cu_chi_project/src/screens/InitHome.dart';
-import 'package:cu_chi_project/src/screens/login_screen.dart';
+
 import 'package:flutter/material.dart';
+
+import 'src/screens/forgot_passwork_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginScreen(),
+      home: ForgotPassWorkScreen(),
     );
   }
 }
