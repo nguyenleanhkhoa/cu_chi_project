@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:cu_chi_project/Styles/theme.dart' as Style;
+import 'package:cuchi_tunnel_gis/Styles/theme.dart' as Style;
 
 class ForgotPassWorkScreen extends StatefulWidget {
+  static const routeName = '/forgot-pass-screen';
   @override
   _ForgotPassWorkScreenState createState() => _ForgotPassWorkScreenState();
 }

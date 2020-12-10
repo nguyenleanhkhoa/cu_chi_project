@@ -15,5 +15,5 @@ class Colors {
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
   );
-  static const  List<Color> colors = [Color(0xFFFB9245),Color(0xFFF54E6B)];
+  static const List<Color> colors = [Color(0xFFFB9245), Color(0xFFF54E6B)];
 }

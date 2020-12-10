@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:cu_chi_project/Styles/theme.dart' as Style;
+import 'package:cuchi_tunnel_gis/Styles/theme.dart' as Style;
 
 class InfoUserScreen extends StatefulWidget {
+  static const routeName = '/infor-user-screen';
+
   @override
   _InfoUserScreenState createState() => _InfoUserScreenState();
 }
 
 class _InfoUserScreenState extends State<InfoUserScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

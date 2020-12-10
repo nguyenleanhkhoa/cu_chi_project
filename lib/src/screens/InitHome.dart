@@ -1,4 +1,4 @@
-import 'package:cu_chi_project/Styles/theme.dart' as Style;
+import 'package:cuchi_tunnel_gis/Styles/theme.dart' as Style;
 import 'package:flutter/material.dart';
 
 class IntHomePage extends StatefulWidget {

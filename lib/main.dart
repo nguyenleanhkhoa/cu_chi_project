@@ -1,10 +1,18 @@
-
+import 'package:cuchi_tunnel_gis/src/bloc/login_bloc/login_bloc.dart';
+import 'package:cuchi_tunnel_gis/src/screens/change_passwork_screen.dart';
+import 'package:cuchi_tunnel_gis/src/screens/info_user_screen.dart';
+import 'package:cuchi_tunnel_gis/src/screens/login_screen.dart';
+import 'package:cuchi_tunnel_gis/src/screens/register_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'src/screens/forgot_passwork_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(BlocProvider(
+    create: (context) => LoginBloc(),
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -30,7 +38,13 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: ForgotPassWorkScreen(),
+      home: LoginScreen(),
+      routes: {
+        ForgotPassWorkScreen.routeName: (ctx) => ForgotPassWorkScreen(),
+        ChangePassWorkScreen.routeName: (ctx) => ChangePassWorkScreen(),
+        RegisterScreen.routeName: (ctx) => RegisterScreen(),
+        InfoUserScreen.routeName: (ctx) => InfoUserScreen(),
+      },
     );
   }
 }
