@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+  <color name="splash">#FF9800</color>
+   <color name="gradientstart">#FF5847</color>
+    <color name="gradientend">#F78104</color>
+</resources>

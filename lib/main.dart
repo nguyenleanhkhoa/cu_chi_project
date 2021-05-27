@@ -1,50 +1,115 @@
-import 'package:cuchi_tunnel_gis/src/bloc/login_bloc/login_bloc.dart';
-import 'package:cuchi_tunnel_gis/src/screens/change_passwork_screen.dart';
-import 'package:cuchi_tunnel_gis/src/screens/info_user_screen.dart';
-import 'package:cuchi_tunnel_gis/src/screens/login_screen.dart';
-import 'package:cuchi_tunnel_gis/src/screens/register_screen.dart';
+import 'package:cuchi/src/screens/screen.dart';
+
+import 'package:cuchi/styles/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wakelock/wakelock.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
 
-import 'src/screens/forgot_passwork_screen.dart';
+import 'src/bloc/bloc.g.dart';
 
-void main() {
-  runApp(BlocProvider(
-    create: (context) => LoginBloc(),
-    child: MyApp(),
-  ));
+void main() async {
+  await DotEnv.load(fileName: '.env');
+
+  runApp(
+    MyApp(),
+  );
+
+  // runApp(TestScale());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+    Wakelock.enable();
+
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<DetailPlaceBloc>(
+          create: (BuildContext context) => DetailPlaceBloc(),
+        ),
+        BlocProvider<MapBloc>(
+          create: (BuildContext context) => MapBloc(),
+        ),
+        BlocProvider<TimelineInputBloc>(
+          create: (BuildContext context) => TimelineInputBloc(),
+        ),
+        BlocProvider<ScaleBarBloc>(
+          create: (BuildContext context) => ScaleBarBloc(),
+        ),
+        BlocProvider<TimelineBarBloc>(
+          create: (BuildContext context) => TimelineBarBloc(),
+        ),
+        BlocProvider<NearByBloc>(
+          create: (BuildContext context) => NearByBloc(),
+        ),
+        BlocProvider<TabBarTypeBloc>(
+          create: (BuildContext context) => TabBarTypeBloc(),
+        ),
+        BlocProvider<UserInforBloc>(
+          create: (BuildContext context) => UserInforBloc(),
+        ),
+        BlocProvider<SearchBloc>(
+          create: (BuildContext context) => SearchBloc(),
+        ),
+        BlocProvider<ZoomInOutBloc>(
+          create: (BuildContext context) => ZoomInOutBloc(),
+          child: Container(),
+        ),
+        BlocProvider<ListLocationBloc>(
+          create: (BuildContext context) => ListLocationBloc(),
+        ),
+        BlocProvider<ButtonMapBloc>(
+          create: (BuildContext context) => ButtonMapBloc(),
+        ),
+        BlocProvider<DetailMapBloc>(
+          create: (BuildContext context) => DetailMapBloc(),
+        ),
+        BlocProvider<MapNavigatorBloc>(
+          create: (BuildContext context) => MapNavigatorBloc(),
+        ),
+        BlocProvider<ListLocationHistoryBloc>(
+          create: (BuildContext context) => ListLocationHistoryBloc(),
+        ),
+        BlocProvider<MapDetailBloc>(
+          create: (BuildContext context) => MapDetailBloc(),
+        ),
+        BlocProvider<PinLocationBloc>(
+          create: (BuildContext context) => PinLocationBloc(),
+        ),
+        BlocProvider<ButtonInSearchBloc>(
+          create: (BuildContext context) => ButtonInSearchBloc(),
+        ),
+        BlocProvider<ButtonIntDetailBloc>(
+          create: (BuildContext context) => ButtonIntDetailBloc(),
+        ),
+        BlocProvider<ToolMapBloc>(
+          create: (BuildContext context) => ToolMapBloc(),
+        ),
+        BlocProvider<FilterRadiusBloc>(
+          create: (BuildContext context) => FilterRadiusBloc(),
+        ),
+        BlocProvider<PinMapBloc>(
+          create: (BuildContext context) => PinMapBloc(),
+        )
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: LightTheme.themeCustom,
+        home: CheckingScreen(),
+        routes: {
+          CheckingScreen.routeName: (ctx) => CheckingScreen(),
+          ShareLocationScreen.routeName: (ctx) => ShareLocationScreen(),
+          NearByLocationScreen.routeName: (ctx) => NearByLocationScreen(),
+          MapOverviewScreen.routeName: (ctx) => MapOverviewScreen(),
+          MapOverviewDetail.routeName: (ctx) => MapOverviewDetail(),
+          AddPlaceScreen.routeName: (ctx) => AddPlaceScreen(),
+          UserInformationScreen.routeName: (ctx) => UserInformationScreen(),
+          ListHistoryScreen.routeName: (ctx) => ListHistoryScreen(),
+          DetailPlaceScreen.routeName: (ctx) => DetailPlaceScreen(),
+          GoogleMapPinLocationScreen.routeName: (ctx) =>
+              GoogleMapPinLocationScreen(),
+        },
       ),
-      home: LoginScreen(),
-      routes: {
-        ForgotPassWorkScreen.routeName: (ctx) => ForgotPassWorkScreen(),
-        ChangePassWorkScreen.routeName: (ctx) => ChangePassWorkScreen(),
-        RegisterScreen.routeName: (ctx) => RegisterScreen(),
-        InfoUserScreen.routeName: (ctx) => InfoUserScreen(),
-      },
     );
   }
 }

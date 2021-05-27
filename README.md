@@ -1,6 +1,6 @@
-# cu_chi_project
+# cuchi
 
-A new Flutter project.
+cuchi
 
 ## Getting Started
 
